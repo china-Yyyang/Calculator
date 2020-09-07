@@ -1,4 +1,4 @@
-## 源代码来自QCounter
+## 源代码来自QCounter >https://github.com/guodongxiaren/QCounter
 
 ### 特点:
 1.将中缀表达式转化为后缀表达式然后计算
