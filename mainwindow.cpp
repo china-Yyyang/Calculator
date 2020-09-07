@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "aboutdialog.h"
 #include <QDebug>
 #include <QDesktopWidget>
 MainWindow::MainWindow(QWidget *parent) :
