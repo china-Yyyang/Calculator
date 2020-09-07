@@ -49,13 +49,13 @@ private slots:
     void on_btnSub_clicked();
     void on_btnMuti_clicked();
     void on_btnDivi_clicked();
+    void on_btnMod_clicked();
     void on_btnEqual_clicked();
     void on_btnLeft_clicked();
     void on_btnRight_clicked();
     void on_btnClear_clicked();
 
     void on_btnBack_clicked();
-    void on_action_about_triggered();
 
 private:
     Ui::MainWindow *ui;
