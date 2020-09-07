@@ -95,6 +95,7 @@ void MainWindow::enableOp(int type)
     ui->btnDivi->setEnabled(enable);
     ui->btnAdd->setEnabled(enable);
 //    ui->btnSub->setEnabled(enable);
+    ui->btnMod->setEnabled(enable);
 }
 void MainWindow::enableLeft(int type)
 {
@@ -241,6 +242,12 @@ void MainWindow::on_btnDivi_clicked()
     ui->lineEdit->setText(s+"/");
     emit whichBtn(OPERA);
 }
+void MainWindow::on_btnMod_clicked()
+{
+    QString s = ui->lineEdit->text();
+    ui->lineEdit->setText(s+'%');
+    emit whichBtn(OPERA);
+}
 ////////////////////////////////////////////
 void MainWindow::on_btnLeft_clicked()
 {
@@ -369,7 +376,7 @@ void MainWindow::evaluation()
             case '-':ans.push(b-a);break;
             case '*':ans.push(b*a);break;
             case '/':ans.push(b/a);break;
-            case '%':ans.push((int)a%(int)b);break;
+            case '%':ans.push((int)b%(int)a);break;
             }
             qDebug()<<ans.top()<<"top";
         }
@@ -405,9 +412,3 @@ void MainWindow::on_btnBack_clicked()
     ui->lineEdit->setText(s);
 }
 
-void MainWindow::on_action_about_triggered()
-{
-    AboutDialog *ad = new AboutDialog();
-    ad->setWindowTitle("About QCounter");
-    ad->show();
-}
