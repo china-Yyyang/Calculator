@@ -35,8 +35,8 @@ MainWindow::~MainWindow()
 //初始化操作.不仅开头调用，每次计算完结果都会调用。
 void MainWindow::init()
 {
-    if(!expStack.isEmpty())
-        expStack.clear();
+//    if(!expStack.isEmpty())
+//        expStack.clear();
     if(!opStack.isEmpty())
         opStack.clear();
     opStack.push('#');
@@ -292,17 +292,23 @@ void MainWindow::toPostfix()
     QString exp;
     for(int i=0;i<exp1.length();i++){
         if(exp1[i]=='-')
-            exp.append("0-");
-        else
+        {
+            if(i>0&&(exp1[i-1].isDigit()||exp1[i-1]==')')){
+                exp.append("-");
+            }
+            else//(i==0||(i>1&&exp1[i-1]=='('))
+            {
+                exp.append("0-");
+            }
+        }
+        else{
             exp.append(exp1[i]);
+        }
     }
     qDebug()<<exp;
     //QString exp = "0.3/(5*2+1)",postfix;
-
-    int j=0;
-    qDebug()<<j;
     for(int i=0;i<exp.length();i++)
-    {qDebug()<<i<<exp[i];
+    {   qDebug()<<i<<exp[i];
         if(exp[i].isDigit()||exp[i]=='.')
         {
             postfix.push_back(exp[i]);
@@ -316,18 +322,18 @@ void MainWindow::toPostfix()
             postfix.push_back(' ');
             while(opStack.top()!='(')
             {
-                postfix.push_back(opStack.pop());qDebug()<<postfix;
+                postfix.push_back(opStack.pop());
             }
             opStack.pop();
         }
         else if(getLevel(exp[i])>getLevel(opStack.top()))
         {
-            postfix.push_back(' ');qDebug()<<"postfix";
+            postfix.push_back(' ');
             opStack.push(exp[i]);
         }
         else
         {
-            postfix.push_back(' ');qDebug()<<postfix;
+            postfix.push_back(' ');
             while(getLevel(exp[i])<=getLevel(opStack.top()))
                 postfix.push_back(opStack.pop());
             opStack.push(exp[i]);
