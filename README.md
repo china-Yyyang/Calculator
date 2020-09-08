@@ -1,5 +1,4 @@
-## 项目基于QTcouter
-> https://github.com/guodongxiaren/QCounter
+## [项目基于QTcouter](https://github.com/guodongxiaren/QCounter)
 ### 特点
 1.中缀表达式,转化为后缀表达式计算
 
